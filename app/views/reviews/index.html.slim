@@ -1,17 +1,22 @@
 h1
   | Movie Reviews
 
-table.table.table-striped
-  tr
-    th Movie
-    th Reviewer
-    th Rating
-    th Comment
-    th Reviewed On
-  - @reviews.each do |review|
+- if @reviews.present?
+  table.table.table-striped
     tr
-      td = review.movie_title
-      td = review.email
-      td = review.rating
-      td = review.comment
-      td = review.created_at.strftime("%D/%M/%Y")
+      th Movie
+      th Reviewer
+      th Rating
+      th Comment
+      th Reviewed On
+    - @reviews.each do |review|
+      tr
+        td = review.movie_title
+        td = review.email
+        td = review.rating
+        td = review.comment
+        td = review.created_at.strftime("%D/%M/%Y")
+- else
+    p 
+      |Create a new review! 
+      = link_to "Movies", root_path
