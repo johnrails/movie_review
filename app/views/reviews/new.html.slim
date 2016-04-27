@@ -1,0 +1,29 @@
+h2
+  | New Review
+
+= form_for @review, url: reviews_path, html:{ class:'form-horizontal'} do |f|
+  -if @review.errors.any?
+    .alert.alert-danger
+      h2 Form is invalid
+      ul
+        - @review.errors.full_messages.each do |message|
+          li = message
+  .form-group
+    = f.label :title, class: 'col-sm-2 form-lable'
+    .col-sm-6
+      = f.text_field :title, value: @movie_title, class: 'form-control'
+  .form-group
+    = f.label :rating, class: 'col-sm-2 form-lable'
+    .col-sm-6
+      = f.text_field :rating, placeholder: "0 to 5 stars", class: 'form-control'
+  .form-group
+    = f.label :comment, class: 'col-sm-2 form-lable'
+    .col-sm-6
+      = f.text_field :comment, placeholder: "This movie is greate!", class: 'form-control'
+  .form-group
+    = f.label :email, class: 'col-sm-2 form-lable'
+    .col-sm-6
+      = f.text_field :email, placeholder: 'user@email.com', class: 'form-control'
+  .form-group
+    .col-sm-6.col-lg-offset-2
+      = f.submit class: 'btn btn-primary'

@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title
+      | New Movie Review
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed data-toggle='collapse' data-target="#navbar" aria-expanded="false" aria-controls="navbar"
+           span class="sr-only" Toggle navigation
+           span class="icon-bar"
+           span class="icon-bar"
+           span class="icon-bar"
+          = link_to "New Movie Revue", root_path, class: "navbar-brand"
+        ul.nav.navbar-nav
+          li = link_to "Reviews", reviews_path
+
+    .container
+      = yield
+    footer.footer
+      .container
+        | New Movie Revue
